@@ -20,7 +20,10 @@ $(document).ready(function () {
         })
         .on('click', () => {
             navigator.clipboard.writeText(magicString).then(function () {
-                $.toast('Copied to clipboard!')
+                $.toast({
+                    icon: 'success',
+                    text: 'Copied to clipboard'
+                })
             })
         })
 
