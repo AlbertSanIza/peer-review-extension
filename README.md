@@ -1,1 +1,1 @@
-# peer-review-extension
+# Peer Review Browser Extension
