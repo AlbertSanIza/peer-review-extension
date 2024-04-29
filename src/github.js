@@ -8,8 +8,12 @@ try {
     magicString += `*${pullRequestTitle}*\n`
     magicString += `${pullRequestURL}`
 
-    navigator.clipboard.writeText(magicString)
-    $.toast('Copied to clipboard!')
+    navigator.clipboard.writeText(magicString).then(() => {
+        $.toast('Copied to clipboard!')
+    })
 } catch (error) {
-    $.toast('Error: ')
+    $.toast({
+        heading: 'Error',
+        text: error.message
+    })
 }
