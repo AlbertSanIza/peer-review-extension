@@ -9,15 +9,11 @@
         "48": "assets/img/icon-48.png",
         "128": "assets/img/icon-128.png"
     },
-    "background": {
-        "service_worker": "src/background.js"
-    },
-    "action": {},
-    "permissions": ["activeTab", "scripting"],
     "content_scripts": [
         {
             "matches": ["https://github.com/*/*/pull/*"],
-            "css": ["assets/lib/jquery-toast.css"]
+            "css": ["assets/lib/jquery-toast.css"],
+            "js": ["assets/lib/jquery.js", "assets/lib/jquery-toast.js", "src/github.js"]
         }
     ]
 }

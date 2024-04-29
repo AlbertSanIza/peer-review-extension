@@ -1,19 +1,28 @@
-try {
+$(document).ready(function () {
     const repositoryName = window.location.href.split('/')[4].trim().toUpperCase()
-    const branchName = document.querySelector('.commit-ref.css-truncate.user-select-contain.expandable.base-ref').textContent.trim()
-    const pullRequestTitle = document.querySelector('.gh-header-title').textContent.trim().replace(/\s+/g, ' ')
+    const branchName = $('.commit-ref.css-truncate.user-select-contain.expandable.base-ref').text().trim()
+    const pullRequestTitle = $('.gh-header-title').text().trim().replace(/\s+/g, ' ')
     const pullRequestURL = window.location.href
 
     let magicString = `${repositoryName} PR to '${branchName}'\n`
     magicString += `*${pullRequestTitle}*\n`
     magicString += `${pullRequestURL}`
 
-    navigator.clipboard.writeText(magicString).then(() => {
-        $.toast('Copied to clipboard!')
-    })
-} catch (error) {
-    $.toast({
-        heading: 'Error',
-        text: error.message
-    })
-}
+    const button = $('<button/>')
+        .text('Peer Review')
+        .addClass('btn btn-sm')
+        .css({
+            'background-color': '#28a745',
+            color: 'white',
+            border: '1px solid #28a745',
+            'border-radius': '6px',
+            margin: '0px'
+        })
+        .on('click', () => {
+            navigator.clipboard.writeText(magicString).then(function () {
+                $.toast('Copied to clipboard!')
+            })
+        })
+
+    $('.gh-header-actions').append(button)
+})
