@@ -14,5 +14,10 @@
     },
     "action": {},
     "permissions": ["activeTab", "scripting"],
-    "content_scripts": []
+    "content_scripts": [
+        {
+            "matches": ["https://github.com/*/*/pull/*"],
+            "css": ["assets/lib/jquery-toast.css"]
+        }
+    ]
 }

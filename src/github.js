@@ -9,7 +9,7 @@ try {
     magicString += `${pullRequestURL}`
 
     navigator.clipboard.writeText(magicString)
-    alert('Copied to clipboard!')
+    $.toast('Copied to clipboard!')
 } catch (error) {
-    console.error(error)
+    $.toast('Error: ')
 }
